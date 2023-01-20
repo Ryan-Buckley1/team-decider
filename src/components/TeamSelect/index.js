@@ -1,25 +1,19 @@
 import React, { useState } from "react";
 
-const Selectors = () => {
-  const [playersState, setPlayersState] = useState("");
+const TeamSelect = () => {
   const [teamState, setTeamState] = useState("");
-
-  const handlePlayerChange = (event) => {
-    const players = event.target.value;
-    setPlayersState(players);
-  };
 
   const handleTeamChange = (event) => {
     const teams = event.target.value;
     setTeamState(teams);
   };
 
-  const handleRandomizer = (event) => {};
   return (
     <>
-      <form onSubmit={handleTeamChange}>
+      <h1> {teamState} Team(s)</h1>
+      <form>
         <div>
-          <select>
+          <select onChange={handleTeamChange}>
             <option>1</option>
             <option>2</option>
             <option>3</option>

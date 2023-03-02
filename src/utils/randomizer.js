@@ -15,14 +15,12 @@ const shuffle = function (array) {
 };
 
 export const randomizer = function (players, teams) {
+  let team;
   const maxTeamSize = players.length / teams;
   //shuffle players then assign to teams in order.
   shuffle(players);
-  const completedTeams = () =>
-    players.length > maxTeamSize
-      ? [
-          players.slice(0, maxTeamSize),
-          ...completedTeams(players.slice(maxTeamSize), maxTeamSize),
-        ]
-      : [players];
+  while (players.length > maxTeamSize) {
+    team = players.splice(0, maxTeamSize);
+    console.log(team);
+  }
 };

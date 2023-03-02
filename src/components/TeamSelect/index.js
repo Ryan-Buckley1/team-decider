@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { randomizer } from "../../utils/randomizer";
 
 const TeamSelect = () => {
   const [teamState, setTeamState] = useState("");
 
   const handleTeamChange = (event) => {
-    const teams = event.target.value;
+    let teams = event.target.value;
     setTeamState(teams);
+  };
+
+  const handleTeamSubmit = (event) => {
+    event.preventDefault();
+    randomizer(teamState, playerState)
   };
 
   return (
@@ -21,7 +27,9 @@ const TeamSelect = () => {
             <option>5</option>
             <option>6</option>
           </select>
-          <button type="submit">Submit</button>
+          <button type="submit" onSubmit={handleTeamSubmit}>
+            Submit
+          </button>
         </div>
       </form>
     </>

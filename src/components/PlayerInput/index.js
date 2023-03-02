@@ -7,16 +7,13 @@ const PlayerInput = () => {
 
   const handlePlayerChange = (event) => {
     event.preventDefault();
-    playersState.push({
-      id: playersState.length + 1,
-      name: currentPlayerState,
-    });
-    setCurrentPlayerState("");
+    setPlayersState((playersState) => [...playersState, currentPlayerState]);
+    // setCurrentPlayerState("");
   };
 
   const handlePlayerNameChange = (event) => {
     event.preventDefault();
-    const playerName = event.target.value;
+    let playerName = event.target.value;
     setCurrentPlayerState(playerName);
   };
 
@@ -42,7 +39,7 @@ const PlayerInput = () => {
       </ul>
       <form onSubmit={handlePlayerChange}>
         <label>
-          Member Name:
+          Player Name:
           <input
             type="text"
             name="name"
@@ -53,7 +50,7 @@ const PlayerInput = () => {
         <button type="submit">Add player</button>
       </form>
       <h1> {teamState} Team(s)</h1>
-      <form>
+      <form onSubmit={handleTeamSubmit}>
         <div>
           <select onChange={handleTeamChange}>
             <option>1</option>
@@ -63,9 +60,7 @@ const PlayerInput = () => {
             <option>5</option>
             <option>6</option>
           </select>
-          <button type="submit" onSubmit={handleTeamSubmit}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </>
